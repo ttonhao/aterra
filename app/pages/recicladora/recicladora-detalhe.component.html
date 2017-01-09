@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <h2>Recicladora</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #contatoForm="ngForm" novalidate>
+                <div [ngClass]="getFormGroupClass(nome.valid,nome.pristine)">
+                    <label for="nome" class="form-control-label">Nome</label>
+                    <input type="text" [ngClass]="getFormControlClass(nome.valid,nome.pristine)" placeholder="Insira o Nome" name="Nome" [(ngModel)]="recicladora.nome"
+                        required #nome="ngModel">
+                    <div class="form-control-feedback" [hidden]="nome.valid || nome.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(dataValidade.valid,dataValidade.pristine)">
+                    <label for="dataValidade">Data Validade</label>
+                    <input type="date" [ngClass]="getFormControlClass(dataValidade.valid,dataValidade.pristine)" placeholder="Insira a Data de Validade"
+                        name="dataValidade" [(ngModel)]="recicladora.dataValidade" required #dataValidade="ngModel">
+                    <div class="form-control-feedback" [hidden]="dataValidade.valid || dataValidade.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(endereco.valid,endereco.pristine)">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" [ngClass]="getFormControlClass(endereco.valid,endereco.pristine)" placeholder="Insira o Endereço" name="endereco"
+                        [(ngModel)]="recicladora.endereco" required #endereco="ngModel">
+                    <div class="form-control-feedback" [hidden]="endereco.valid || endereco.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(mapa.valid,mapa.pristine)">
+                    <label for="mapa">Mapa</label>
+                    <input type="text" [ngClass]="getFormControlClass(mapa.valid,mapa.pristine)" placeholder="Insira o Mapa" name="mapa" [(ngModel)]="recicladora.mapa"
+                        required #mapa="ngModel">
+                    <div class="form-control-feedback" [hidden]="mapa.valid || mapa.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(operacoesParametro.valid,operacoesParametro.pristine)">
+                    <label for="operacoesParametro">Operacional Parametro</label>
+                    <select [ngClass]="getFormControlClass(operacoesParametro.valid,mapa.pristine)" name="operacoesParametro" [(ngModel)]="recicladora.operacoesParametro"
+                        required #operacoesParametro="ngModel">
+                        <option *ngFor="let item of operacaoRecicladoraEnum | keys" [value]="item.key">{{item.value}}</option>
+                     </select>
+                    <div class="form-control-feedback" [hidden]="operacoesParametro.valid || operacoesParametro.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(plataforma.valid,plataforma.pristine)">
+                    <label for="plataforma">Plataforma</label>
+                    <input type="text" [ngClass]="getFormControlClass(plataforma.valid,plataforma.pristine)" placeholder="Insira a Plataforma" name="plataforma" [(ngModel)]="recicladora.plataforma"
+                        required #plataforma="ngModel">
+                    <div class="form-control-feedback" [hidden]="plataforma.valid || plataforma.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(tipoMaterial.valid,tipoMaterial.pristine)">
+                    <label for="tipoMaterial">Tipo Material</label>
+                    <input type="text" [ngClass]="getFormControlClass(tipoMaterial.valid,tipoMaterial.pristine)" placeholder="Insira o Tipo Plataforma" name="tipoMaterial" [(ngModel)]="recicladora.tipoMaterial"
+                        required #tipoMaterial="ngModel">
+                    <div class="form-control-feedback" [hidden]="tipoMaterial.valid || tipoMaterial.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Resoponsavel
+                    </div>
+                    <div class="card-block">
+                        <div [ngClass]="getFormGroupClass(nomeResponsavel.valid,nomeResponsavel.pristine)">
+                            <label for="nomeResponsavel">Nome</label>
+                            <input type="text" [ngClass]="getFormControlClass(nomeResponsavel.valid,nomeResponsavel.pristine)" placeholder="Insira o Nome do responsavel"
+                                name="nomeResponsavel" [(ngModel)]="recicladora.responsavel.nome" required #nomeResponsavel="ngModel">
+                            <div class="form-control-feedback" [hidden]="nomeResponsavel.valid || nomeResponsavel.pristine"> O Campo é obrigatorio</div>
+                        </div>
+                        <div [ngClass]="getFormGroupClass(emailResponsavel.valid,emailResponsavel.pristine)">
+                            <label for="emailResponsavel">E-mail</label>
+                            <input type="email" [ngClass]="getFormControlClass(emailResponsavel.valid,emailResponsavel.pristine)" placeholder="Insira o E-mail do responsavel"
+                                name="emailResponsavel" [(ngModel)]="recicladora.responsavel.email" required #emailResponsavel="ngModel">
+                            <div class="form-control-feedback" [hidden]="emailResponsavel.valid || emailResponsavel.pristine"> O Campo é obrigatorio</div>
+                        </div>
+                        <div [ngClass]="getFormGroupClass(telefoneResponsavel.valid,telefoneResponsavel.pristine)">
+                            <label for="telefoneResponsavel">Telefone</label>
+                            <input type="text" [ngClass]="getFormControlClass(telefoneResponsavel.valid,telefoneResponsavel.pristine)" placeholder="Insira o Telefone do responsavel"
+                                name="telefoneResponsavel" [(ngModel)]="recicladora.responsavel.telefone" required #telefoneResponsavel="ngModel">
+                            <div class="form-control-feedback" [hidden]="telefoneResponsavel.valid || telefoneResponsavel.pristine"> O Campo é obrigatorio</div>
+                        </div>
+                        <div [ngClass]="getFormGroupClass(funcaoResponsavel.valid,funcaoResponsavel.pristine)">
+                            <label for="funcaoResponsavel">Função</label>
+                            <select [ngClass]="getFormControlClass(operacoesParametro.valid,mapa.pristine)" name="funcaoResponsavel" [(ngModel)]="recicladora.responsavel.funcao"
+                                required #funcaoResponsavel="ngModel">
+                                    <option *ngFor="let item of funcaoResponsavelEnum | keys" [value]="item.key">{{item.value}}</option>
+                            </select>
+                            <div class="form-control-feedback" [hidden]="funcaoResponsavel.valid || funcaoResponsavel.pristine"> O Campo é obrigatorio</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success" [disabled]="!contatoForm.form.valid">Salvar</button>
+                    <a class="btn btn-secondary" (click)="goBack()">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

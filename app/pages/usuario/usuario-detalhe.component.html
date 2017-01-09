@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <h2>Usuario</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form (ngSubmit)="onSubmit()" #contatoForm="ngForm" novalidate>
+                <div [ngClass]="getFormGroupClass(nome.valid,nome.pristine)">
+                    <label for="nome" class="form-control-label">Nome</label>
+                    <input type="text" [ngClass]="getFormControlClass(nome.valid,nome.pristine)" placeholder="Insira o Nome" name="Nome" [(ngModel)]="usuario.nome"
+                        required #nome="ngModel">
+                    <div class="form-control-feedback" [hidden]="nome.valid || nome.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(email.valid,email.pristine)">
+                    <label for="email">Data Validade</label>
+                    <input type="email" [ngClass]="getFormControlClass(email.valid,email.pristine)" placeholder="Insira o E-mail"
+                        name="email" [(ngModel)]="usuario.email" required #email="ngModel">
+                    <div class="form-control-feedback" [hidden]="email.valid || email.pristine"> O Campo é obrigatorio</div>
+                </div>
+                
+                <div [ngClass]="getFormGroupClass(senha.valid,senha.pristine)">
+                    <label for="senha">Senha</label>
+                    <input type="password" [ngClass]="getFormControlClass(senha.valid,senha.pristine)" placeholder="Insira a Senha" name="senha" [(ngModel)]="usuario.senha"
+                        required #senha="ngModel">
+                    <div class="form-control-feedback" [hidden]="senha.valid || senha.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div [ngClass]="getFormGroupClass(telefone.valid,telefone.pristine)">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" [ngClass]="getFormControlClass(telefone.valid,telefone.pristine)" placeholder="Insira o Telefone" name="telefone" [(ngModel)]="usuario.telefone"
+                        required #telefone="ngModel">
+                    <div class="form-control-feedback" [hidden]="telefone.valid || telefone.pristine"> O Campo é obrigatorio</div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success" [disabled]="!contatoForm.form.valid">Salvar</button>
+                    <a class="btn btn-secondary" (click)="goBack()">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
